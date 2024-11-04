@@ -4,11 +4,14 @@ interface PopitProps {
   currentScore?: number;
   bubbleStates: boolean[][];
   setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>;
+  handleBubbleClick: any;
 }
 export const Popit: React.FC<PopitProps> = ({
   className,
   currentScore = 9999,
   bubbleStates,
+  handleBubbleClick,
+  setBubbleStates,
 }) => {
   return (
     <div className={className}>
@@ -26,14 +29,14 @@ export const Popit: React.FC<PopitProps> = ({
                 <div
                   key={colIndex}
                   className={`cell ${active ? "active" : ""}`}
-                  //   onClick={(event) =>
-                  //     handleBubbleClick(
-                  //       rowIndex,
-                  //       colIndex,
-                  //       setBubbleStates,
-                  //       event
-                  //     )
-                  //   }
+                  onClick={(event) =>
+                    handleBubbleClick(
+                      rowIndex,
+                      colIndex,
+                      setBubbleStates,
+                      event
+                    )
+                  }
                 ></div>
               ))}
             </div>

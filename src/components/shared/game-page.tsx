@@ -6,7 +6,6 @@ import { EnergyBar } from "./energy-bar";
 import { RatingBar } from "./rating-bar";
 interface GamePageProps {
   className?: string;
-  clickPerOne?: number;
   shownScore?: number;
   bubbleStates: boolean[][];
   setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>;
@@ -16,6 +15,14 @@ interface GamePageProps {
   setPercent: (value: number) => void;
   isShowMenu: boolean;
   setShowMenu: (value: boolean) => void;
+  clickPerOne?: number;
+  energyWait: boolean;
+  handlePercent: (value: number) => void;
+  handleBubbleClick: (
+    rowIndex: number,
+    colIndex: number,
+    setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>
+  ) => void;
 }
 export const GamePage: React.FC<GamePageProps> = ({
   className,
@@ -27,7 +34,31 @@ export const GamePage: React.FC<GamePageProps> = ({
   percent,
   setPercent,
   isShowMenu,
+  energyWait,
+  handlePercent,
+  handleBubbleClick,
 }) => {
+  const sFunc = () => {
+    console.log("percent", percent);
+    if (percent > 50.1) {
+      setTimeout(() => {
+        handlePercent(100);
+      }, 3000);
+    } else if (percent < 50.1) {
+      setTimeout(() => {
+        handlePercent(50);
+        setTimeout(() => {
+          handlePercent(100);
+        }, 7000);
+      }, 1000);
+    }
+  };
+  React.useEffect(() => {
+    if (percent <= 100 || !energyWait) {
+      sFunc();
+    }
+  }, [energyWait]);
+
   return (
     <div className={className}>
       <div className="container">
@@ -55,15 +86,11 @@ export const GamePage: React.FC<GamePageProps> = ({
           </div>
         </div>
         <>
-          {/* <ClickPlace
-                setShowNUM={setShowNUM}
-                isShowNUM={isShowNUM}
-                clickPerOne={clickPerOne}
-              /> */}
           <Popit
             currentScore={currentScore}
             bubbleStates={bubbleStates}
             setBubbleStates={setBubbleStates}
+            handleBubbleClick={handleBubbleClick}
           />
         </>
         <EnergyBar setPercent={setPercent} percent={percent} />
