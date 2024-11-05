@@ -3,12 +3,29 @@
 import React from "react";
 import { GamePage } from "./game-page";
 import debounce from "lodash.debounce";
+import { toShort } from "@/src/hooks/handleCount";
+import { frontEndBoosts } from "../../constants/frontEndBoosts";
+import { Market } from "./market";
+
 interface GameProps {
   className?: string;
 }
 export const Game: React.FC<GameProps> = ({ className }) => {
-  // Интерфейс
+  // ## Интерфейс
   const [isShowMenu, setShowMenu] = React.useState(true);
+  const [isShowMarket, setShownMarket] = React.useState(false);
+  // ## Интерфейс #Бусты
+  const [boostsLists, setBoostsLists] = React.useState([]);
+  const [currentOpenedBoost, setCurrentOpenedBoost] = React.useState(0);
+  const [isNowBoosting, setIsNowBoosting] = React.useState(0);
+  const [showBoosts, setShowBoosts] = React.useState(1);
+
+  // ## Интерфейс #Маркет
+  const handleShowMarket = () => {
+    // document.querySelector("body").classList.remove("green");
+    setShownMarket(true);
+    setShowMenu(false);
+  };
 
   // Энергия
   const [percent, setPercent] = React.useState(100);
@@ -85,6 +102,27 @@ export const Game: React.FC<GameProps> = ({ className }) => {
 
   return (
     <div className={className}>
+      {isShowMarket ? (
+        <Market
+          currentScore={currentScore}
+          toShort={toShort}
+          // handleBoosting={handleBoosting}
+          clickPerOne={clickPerOne}
+          boostsLists={boostsLists}
+          setShownMenu={setShowMenu}
+          setShownMarket={setShownMarket}
+          shownScore={shownScore}
+          currentOpenedBoost={currentOpenedBoost}
+          setCurrentOpenedBoost={setCurrentOpenedBoost}
+          frontEndBoosts={frontEndBoosts}
+          showBoosts={showBoosts}
+          isNowBoosting={isNowBoosting}
+          // boostImg1={boostImg1}
+          setShowMenu={setShowMenu}
+        />
+      ) : (
+        ""
+      )}
       <GamePage
         currentScore={currentScore}
         setScore={setScore}
@@ -99,6 +137,7 @@ export const Game: React.FC<GameProps> = ({ className }) => {
         handlePercent={handlePercent}
         shownScore={shownScore}
         handleBubbleClick={handleBubbleClick}
+        handleShowMarket={handleShowMarket}
       />
     </div>
   );

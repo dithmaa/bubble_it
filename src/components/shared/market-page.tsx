@@ -1,14 +1,31 @@
 import { cn } from "@/src/lib/utils";
 import React from "react";
 import { toShort } from "@/src/hooks/handleCount";
+import { BoostSkeletton } from "./boost-skeletton";
 interface MarketPageProps {
   className?: string;
   shownScore: number;
 }
 export const MarketPage: React.FC<MarketPageProps> = ({
   className,
+  frontEndBoosts,
+  marketBig,
   shownScore,
+  toShort,
+  boostImg1,
+  boostsLists,
+  showBoosts,
+  handleShowBoostPage,
+  currentScore,
+  images,
 }) => {
+  const [isBoostLoaded, setBoostLoad] = React.useState(false);
+  React.useState(() => {
+    setTimeout(() => {
+      setBoostLoad(1);
+    }, 1000);
+  }, []);
+
   return (
     <div className={cn("container", className)}>
       <div className="market-offer">
@@ -18,7 +35,11 @@ export const MarketPage: React.FC<MarketPageProps> = ({
       <div className="current-score-place">
         <span>Твой баланс:</span>
         <p>
-          <img className="buba-score-icon" src={boostImg1} alt="Buba Icon" />
+          <img
+            className="buba-score-icon"
+            src={"assets/img/icon-boost-1.png"}
+            alt="Buba Icon"
+          />
           {shownScore < 1000000 ? shownScore : toShort(String(shownScore))}
         </p>
       </div>
@@ -47,7 +68,7 @@ export const MarketPage: React.FC<MarketPageProps> = ({
                 .fill(5)
                 .map((item, index) => {
                   return (
-                    <div style={{ margin: "5px 0" }}>
+                    <div key={index} style={{ margin: "5px 0" }}>
                       <BoostSkeletton key={index} />
                     </div>
                   );

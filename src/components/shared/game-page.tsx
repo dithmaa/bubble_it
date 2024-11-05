@@ -37,6 +37,7 @@ export const GamePage: React.FC<GamePageProps> = ({
   energyWait,
   handlePercent,
   handleBubbleClick,
+  handleShowMarket,
 }) => {
   const sFunc = () => {
     console.log("percent", percent);
@@ -108,10 +109,7 @@ export const GamePage: React.FC<GamePageProps> = ({
               <img src="/assets/img/present.png" alt="Present Icon" />
               <span>Задания</span>
             </button>
-            <button
-              className="menu__item"
-              // onClick={handleShowMarket}
-            >
+            <button className="menu__item" onClick={handleShowMarket}>
               <img src="/assets/img/market_icon.png" alt="Market Icon" />
               <span>Бусты</span>
             </button>
