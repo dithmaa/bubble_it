@@ -3,16 +3,37 @@ import React from "react";
 import { toShort } from "@/src/hooks/handleCount";
 import { BoostSkeletton } from "./boost-skeletton";
 import { BoostItem } from "./boost-item";
+
+type BoostListsType = {
+  id: number;
+  price: number;
+  level: number;
+  title: string;
+};
+
+type FrontEndBoostsType = {
+  id: number;
+  title: string;
+  power: number;
+  image: string;
+};
+
 interface MarketPageProps {
   className?: string;
   shownScore: number;
+  toShort: (value: string) => void;
+  frontEndBoosts: FrontEndBoostsType[];
+  boostsLists: BoostListsType[];
+  showBoosts: number;
+  handleShowBoostPage: (value: number) => void;
+  currentScore: number;
+  images: string[];
 }
 export const MarketPage: React.FC<MarketPageProps> = ({
   className,
   frontEndBoosts,
   shownScore,
   toShort,
-  boostImg1,
   boostsLists,
   showBoosts,
   handleShowBoostPage,

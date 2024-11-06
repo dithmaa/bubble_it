@@ -1,8 +1,35 @@
 import React from "react";
 import { MarketPage } from "./market-page";
 import { BoostPage } from "./boost-page";
+
+export type BoostListsType = {
+  id: number;
+  price: number;
+  level: number;
+  title: string;
+};
+export type FrontEndBoostsType = {
+  id: number;
+  title: string;
+  power: number;
+  image: string;
+};
 interface MarketProps {
   className?: string;
+  currentScore: number;
+  toShort: (number: string) => void;
+  clickPerOne?: number;
+  boostsLists: BoostListsType[];
+  setShownMenu: (value: boolean) => void;
+  setShownMarket: (value: boolean) => void;
+  shownScore: number;
+  currentOpenedBoost: number;
+  setCurrentOpenedBoost: (value: number) => void;
+  frontEndBoosts: FrontEndBoostsType[];
+  showBoosts: number;
+  isNowBoosting: boolean;
+  setShowMenu: (value: boolean) => void;
+  setShowGamePage: (value: boolean) => void;
 }
 export const Market: React.FC<MarketProps> = ({
   className,
@@ -17,10 +44,11 @@ export const Market: React.FC<MarketProps> = ({
   setShowGamePage,
   currentOpenedBoost,
   setCurrentOpenedBoost,
+  isNowBoosting,
 }) => {
-  const [isShowBoostPage, setShowBoostPage] = React.useState(0);
+  const [isShowBoostPage, setShowBoostPage] = React.useState<boolean>(false);
 
-  const handleShowBoostPage = (currentPage) => {
+  const handleShowBoostPage = (currentPage: number) => {
     setShowBoostPage(true);
     setCurrentOpenedBoost(currentPage);
 

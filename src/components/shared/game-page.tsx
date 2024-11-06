@@ -22,6 +22,7 @@ interface GamePageProps {
     colIndex: number,
     setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>
   ) => void;
+  handleShowMarket: () => void;
 }
 export const GamePage: React.FC<GamePageProps> = ({
   clickPerOne = 1,
@@ -38,7 +39,6 @@ export const GamePage: React.FC<GamePageProps> = ({
   handleShowMarket,
 }) => {
   const sFunc = () => {
-    console.log("percent", percent);
     if (percent > 50.1) {
       setTimeout(() => {
         handlePercent(100);
@@ -96,14 +96,7 @@ export const GamePage: React.FC<GamePageProps> = ({
 
         {isShowMenu && (
           <nav className="menu">
-            {/* <button className="menu__item" onClick={handleShowFriends}>
-          <img src={friendIcon} alt="Friend Icon" />
-          <span>Друзья</span>
-        </button> */}
-            <button
-              className="menu__item"
-              // onClick={handleShowPresent}
-            >
+            <button className="menu__item">
               <img src="/assets/img/present.png" alt="Present Icon" />
               <span>Задания</span>
             </button>

@@ -54,8 +54,8 @@ export const Game: React.FC<GameProps> = ({ className }) => {
     },
   ]);
   const [currentOpenedBoost, setCurrentOpenedBoost] = React.useState(0);
-  const [isNowBoosting, setIsNowBoosting] = React.useState(0);
-  const [showBoosts, setShowBoosts] = React.useState(1);
+  const [isNowBoosting, setIsNowBoosting] = React.useState(false);
+  const [showBoosts, setShowBoosts] = React.useState(2);
 
   // ## Интерфейс #Маркет
   const handleShowMarket = () => {
@@ -82,8 +82,8 @@ export const Game: React.FC<GameProps> = ({ className }) => {
   );
   // Логика очков
 
-  const [shownScore, setShown] = React.useState(0);
-  const [currentScore, setScore] = React.useState(0);
+  const [shownScore, setShown] = React.useState<number>(0);
+  const [currentScore, setScore] = React.useState<number>(0);
 
   // Клик на попит
   const [bubbleStates, setBubbleStates] = React.useState(
@@ -91,23 +91,12 @@ export const Game: React.FC<GameProps> = ({ className }) => {
   );
   const [clickPerOne, setClickPerOne] = React.useState(1);
 
-  const handleBubbleClick = (rowIndex, colIndex, setBubbleStates) => {
-    // if (hasInviter) {
-    //   setTimeout(() => {
-    //     updateFriendsListDebounced(
-    //       inviterFriendsList,
-    //       totalRefScore,
-    //       inviterId
-    //     );
-    //   }, 0);
-    // }
+  const handleBubbleClick = (
+    rowIndex: number,
+    colIndex: number,
+    setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>
+  ) => {
     if (percent > 0) {
-      // if ("vibrate" in navigator) {
-      //   navigator.vibrate(200); // Продолжительность вибрации в миллисекундах
-      // } else {
-      //   alert("API для вибрации не поддерживается в вашем браузере.");
-      // }
-
       // setShowNUM(true);
       let newPercent = percent;
       newPercent -= 3;
@@ -124,16 +113,10 @@ export const Game: React.FC<GameProps> = ({ className }) => {
       energyDebounce();
       setScore((prevScore) => {
         prevScore = Number(clickPerOne) + Number(prevScore);
-        // const refGiftCount = Math.ceil(clickPerOne * 0.15);
-        // setTotalRefScore((prev) => prev + refGiftCount);
-        // giveGiftScore(refId, totalRefScore);
-        // increaseCount(prevScore);
         setShown(prevScore);
-        // console.log("refGiftCount", refGiftCount);
         return prevScore;
       });
     } else {
-      // console.log("Ваша энергия на исходе");
       setPercent(0);
     }
   };
@@ -155,7 +138,6 @@ export const Game: React.FC<GameProps> = ({ className }) => {
           frontEndBoosts={frontEndBoosts}
           showBoosts={showBoosts}
           isNowBoosting={isNowBoosting}
-          // boostImg1={boostImg1}
           setShowMenu={setShowMenu}
           setShowGamePage={setShowGamePage}
         />

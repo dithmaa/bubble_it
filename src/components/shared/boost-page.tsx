@@ -1,6 +1,29 @@
 import React from "react";
+type BoostListsType = {
+  id: number;
+  price: number;
+  level: number;
+  title: string;
+};
+
+type FrontEndBoostsType = {
+  id: number;
+  title: string;
+  power: number;
+  image: string;
+};
 interface BoostPageProps {
   className?: string;
+  handleBackBoost: () => void;
+  frontEndBoosts: FrontEndBoostsType[];
+  currentOpenedBoost: number;
+  boostsLists: BoostListsType[];
+  currentScore: number;
+  handleBoosting: () => void;
+  shownScore: number;
+  toShort: (value: string) => void;
+  isNowBoosting: boolean;
+  images: string[];
 }
 export const BoostPage: React.FC<BoostPageProps> = ({
   className = "boost-page",
@@ -8,7 +31,6 @@ export const BoostPage: React.FC<BoostPageProps> = ({
   frontEndBoosts,
   currentOpenedBoost,
   boostsLists,
-  boostImg1,
   currentScore,
   handleBoosting,
   shownScore,
