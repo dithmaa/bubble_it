@@ -14,8 +14,45 @@ export const Game: React.FC<GameProps> = ({ className }) => {
   // ## Интерфейс
   const [isShowMenu, setShowMenu] = React.useState(true);
   const [isShowMarket, setShownMarket] = React.useState(false);
+  const [isShowGamePage, setShowGamePage] = React.useState(true);
   // ## Интерфейс #Бусты
-  const [boostsLists, setBoostsLists] = React.useState([]);
+  const [boostsLists, setBoostsLists] = React.useState([
+    {
+      id: 1,
+      price: 12502,
+      level: 51,
+    },
+    {
+      id: 2,
+      price: 59185,
+      level: 21,
+    },
+    {
+      id: 3,
+      price: 595876,
+      level: 26,
+    },
+    {
+      id: 4,
+      price: 1331000,
+      level: 3,
+    },
+    {
+      id: 5,
+      price: 5500000,
+      level: 1,
+    },
+    {
+      id: 6,
+      price: 16500000,
+      level: 1,
+    },
+    {
+      id: 7,
+      price: 100000000,
+      level: 0,
+    },
+  ]);
   const [currentOpenedBoost, setCurrentOpenedBoost] = React.useState(0);
   const [isNowBoosting, setIsNowBoosting] = React.useState(0);
   const [showBoosts, setShowBoosts] = React.useState(1);
@@ -25,6 +62,7 @@ export const Game: React.FC<GameProps> = ({ className }) => {
     // document.querySelector("body").classList.remove("green");
     setShownMarket(true);
     setShowMenu(false);
+    setShowGamePage(!isShowGamePage);
   };
 
   // Энергия
@@ -119,26 +157,30 @@ export const Game: React.FC<GameProps> = ({ className }) => {
           isNowBoosting={isNowBoosting}
           // boostImg1={boostImg1}
           setShowMenu={setShowMenu}
+          setShowGamePage={setShowGamePage}
         />
       ) : (
         ""
       )}
-      <GamePage
-        currentScore={currentScore}
-        setScore={setScore}
-        bubbleStates={bubbleStates}
-        setBubbleStates={setBubbleStates}
-        percent={percent}
-        setPercent={setPercent}
-        isShowMenu={isShowMenu}
-        setShowMenu={setShowMenu}
-        clickPerOne={clickPerOne}
-        energyWait={energyWait}
-        handlePercent={handlePercent}
-        shownScore={shownScore}
-        handleBubbleClick={handleBubbleClick}
-        handleShowMarket={handleShowMarket}
-      />
+
+      {isShowGamePage && (
+        <GamePage
+          currentScore={currentScore}
+          setScore={setScore}
+          bubbleStates={bubbleStates}
+          setBubbleStates={setBubbleStates}
+          percent={percent}
+          setPercent={setPercent}
+          isShowMenu={isShowMenu}
+          setShowMenu={setShowMenu}
+          clickPerOne={clickPerOne}
+          energyWait={energyWait}
+          handlePercent={handlePercent}
+          shownScore={shownScore}
+          handleBubbleClick={handleBubbleClick}
+          handleShowMarket={handleShowMarket}
+        />
+      )}
     </div>
   );
 };

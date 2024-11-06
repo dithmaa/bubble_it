@@ -4,6 +4,11 @@ interface BoostSkelettonProps {
 }
 export const BoostSkeletton: React.FC<BoostSkelettonProps> = ({
   className,
+  index,
 }) => {
-  return <div className={className}>BoostSkeletton</div>;
+  return (
+    <div key={index} className={className}>
+      BoostSkeletton
+    </div>
+  );
 };

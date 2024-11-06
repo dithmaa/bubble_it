@@ -432,7 +432,7 @@ html {
   padding-bottom: 30px;
 }
 .market {
-  background: #590d6a;
+  /* background: #590d6a; */
   position: absolute;
   top: 0;
   right: 0;
@@ -442,11 +442,11 @@ html {
   height: 100%;
   z-index: 999999;
   color: #fff;
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle,
     rgba(89, 13, 106, 1) 0%,
     rgba(31, 0, 34, 1) 100%
-  );
+  ); */
 }
 .market-options {
   width: 100%;
@@ -454,7 +454,7 @@ html {
 .market .option {
   display: flex;
   align-items: center;
-  background-color: #515151 a0;
+  background-color: #515151a0;
   padding: 10px;
   border-radius: 10px;
   transition: 0.25s ease opacity;
@@ -646,4 +646,11 @@ html {
 
 .rating-bar:active {
   opacity: 0.6;
+}
+.market-options__title {
+  font-weight: 600;
+}
+.market h2 {
+  font-weight: 600;
+  margin-top: 10px;
 }

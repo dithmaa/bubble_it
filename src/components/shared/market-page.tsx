@@ -2,6 +2,7 @@ import { cn } from "@/src/lib/utils";
 import React from "react";
 import { toShort } from "@/src/hooks/handleCount";
 import { BoostSkeletton } from "./boost-skeletton";
+import { BoostItem } from "./boost-item";
 interface MarketPageProps {
   className?: string;
   shownScore: number;
@@ -9,7 +10,6 @@ interface MarketPageProps {
 export const MarketPage: React.FC<MarketPageProps> = ({
   className,
   frontEndBoosts,
-  marketBig,
   shownScore,
   toShort,
   boostImg1,
@@ -20,16 +20,16 @@ export const MarketPage: React.FC<MarketPageProps> = ({
   images,
 }) => {
   const [isBoostLoaded, setBoostLoad] = React.useState(false);
-  React.useState(() => {
+  React.useEffect(() => {
     setTimeout(() => {
-      setBoostLoad(1);
+      setBoostLoad(true);
     }, 1000);
   }, []);
 
   return (
     <div className={cn("container", className)}>
       <div className="market-offer">
-        <img src="assets/market_icon_big.png" />
+        <img src="assets/img/market_icon_big.png" />
         <h2>Бусты</h2>
       </div>
       <div className="current-score-place">
@@ -55,7 +55,6 @@ export const MarketPage: React.FC<MarketPageProps> = ({
                       showBoosts={showBoosts}
                       index={index}
                       handleShowBoostPage={handleShowBoostPage}
-                      boostImageLock={boostImageLock}
                       images={images}
                       frontEndBoosts={frontEndBoosts}
                       currentScore={currentScore}
@@ -64,15 +63,13 @@ export const MarketPage: React.FC<MarketPageProps> = ({
                   );
                 })
               : ""
-            : Array(10)
-                .fill(5)
-                .map((item, index) => {
-                  return (
-                    <div key={index} style={{ margin: "5px 0" }}>
-                      <BoostSkeletton key={index} />
-                    </div>
-                  );
-                })}
+            : [1, 2, 3, 4, 5, 6, 7].map((item) => {
+                return (
+                  <div key={item} style={{ margin: "5px 0" }}>
+                    <BoostSkeletton key={item} index={item} />
+                  </div>
+                );
+              })}
         </div>
       </div>
     </div>

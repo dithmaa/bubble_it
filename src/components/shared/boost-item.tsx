@@ -11,11 +11,10 @@ export const BoostItem: React.FC<BoostItemProps> = ({
   images,
   frontEndBoosts,
   currentScore,
-  key,
 }) => {
   return (
     <div
-      key={index}
+      key={boost.id}
       className={index >= showBoosts ? "option disabled" : "option"}
       onClick={() => handleShowBoostPage(index)}
     >

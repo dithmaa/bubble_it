@@ -1,5 +1,6 @@
 import React from "react";
 import { MarketPage } from "./market-page";
+import { BoostPage } from "./boost-page";
 interface MarketProps {
   className?: string;
 }
@@ -11,6 +12,11 @@ export const Market: React.FC<MarketProps> = ({
   showBoosts,
   frontEndBoosts,
   currentScore,
+  setShowMenu,
+  setShownMarket,
+  setShowGamePage,
+  currentOpenedBoost,
+  setCurrentOpenedBoost,
 }) => {
   const [isShowBoostPage, setShowBoostPage] = React.useState(0);
 
@@ -26,6 +32,7 @@ export const Market: React.FC<MarketProps> = ({
     // }
     setShownMarket(false);
     setShowMenu(true);
+    setShowGamePage(true);
   };
   const handleBackBoost = () => {
     setShowBoostPage(false);
@@ -51,10 +58,10 @@ export const Market: React.FC<MarketProps> = ({
             currentOpenedBoost={currentOpenedBoost}
             boostsLists={boostsLists}
             currentScore={currentScore}
-            handleBoosting={handleBoosting}
+            // handleBoosting={handleBoosting}
             shownScore={shownScore}
             toShort={toShort}
-            isNowBoosting={isNowBoosting}
+            // isNowBoosting={isNowBoosting}
             images={images}
           />
         ) : (

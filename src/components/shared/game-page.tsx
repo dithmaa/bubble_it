@@ -5,7 +5,6 @@ import { Popit } from "./popit";
 import { EnergyBar } from "./energy-bar";
 import { RatingBar } from "./rating-bar";
 interface GamePageProps {
-  className?: string;
   shownScore?: number;
   bubbleStates: boolean[][];
   setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>;
@@ -25,7 +24,6 @@ interface GamePageProps {
   ) => void;
 }
 export const GamePage: React.FC<GamePageProps> = ({
-  className,
   clickPerOne = 1,
   shownScore = 9999,
   bubbleStates,
@@ -61,7 +59,7 @@ export const GamePage: React.FC<GamePageProps> = ({
   }, [energyWait]);
 
   return (
-    <div className={className}>
+    <div className={"game-page"}>
       <div className="container">
         <RatingBar
         // onClick={() => setShownRating(true)}
