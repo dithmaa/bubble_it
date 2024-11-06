@@ -1,0 +1,32 @@
+datasource db {
+    url       = env("POSTGRES_PRISMA_URL")
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+    provider = "postgresql"
+}
+
+generator client {
+    provider =  "prisma-client-js"
+}
+
+model User {
+  id                  Int       @id @default(autoincrement())
+  createdAt           DateTime  @default(now())
+  tg_id               Int       @unique
+  name                String?   @default("username")
+  tg_username         String?   @default("none")
+  clickAmount         Int
+  clickPerOne         Int
+  showBoosts          Int
+  isCompletedMiss     Boolean
+  isCompletedMission  Boolean
+
+  boosts              Boost[]   @relation("UserBoosts") // Связь один-ко-многим с Boost
+}
+
+model Boost {
+  id       Int    @id @default(autoincrement())
+  price    Int
+  level    Int
+  userId   Int    // Внешний ключ для связи с User
+  user     User   @relation(fields: [userId], references: [id], name: "UserBoosts")
+}
