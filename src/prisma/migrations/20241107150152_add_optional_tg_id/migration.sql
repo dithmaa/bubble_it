@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Boost" ALTER COLUMN "tg_id" DROP NOT NULL,
+ALTER COLUMN "tg_id" DROP DEFAULT;

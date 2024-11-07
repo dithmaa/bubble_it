@@ -6,6 +6,7 @@ import debounce from "lodash.debounce";
 import { toShort } from "@/src/hooks/handleCount";
 import { frontEndBoosts } from "../../constants/frontEndBoosts";
 import { Market } from "./market";
+import axios from "axios";
 
 interface GameProps {
   className?: string;
@@ -120,6 +121,20 @@ export const Game: React.FC<GameProps> = ({ className }) => {
       setPercent(0);
     }
   };
+  //Получение пользователей
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/boosts?tg_id=32932")
+      .then(({ data }) => {
+        console.log(data);
+        console.log(boostsLists);
+      });
+    axios
+      .get("http://localhost:3000/api/users?tg_id=32932")
+      .then(({ data }) => {
+        console.log(data);
+      });
+  }, []);
 
   return (
     <div className={className}>
