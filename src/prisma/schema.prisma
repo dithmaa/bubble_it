@@ -34,3 +34,7 @@ model Boost {
 model N {
   id Int @id @default(autoincrement())
 }
+
+model Z {
+  id Int @id @default(autoincrement())
+}
