@@ -20,21 +20,16 @@ model User {
   isCompletedMiss    Boolean
   isCompletedMission Boolean
 
-  boosts Boost[] @relation("UserBoosts") // Связь один-ко-многим с Boost
+  boosts Boost[] // Обратное отношение к бустам
 }
 
 model Boost {
-  id     Int  @id @default(autoincrement())
-  price  Int
-  level  Int
-  userId Int // Внешний ключ для связи с User
-  user   User @relation(fields: [userId], references: [id], name: "UserBoosts")
-}
+  id           Int  @id @default(autoincrement())
+  price        Int
+  level        Int
+  boostOrderId Int // Идентификатор для определённого типа буста
+  userId       Int
+  user         User @relation(fields: [userId], references: [id])
 
-model N {
-  id Int @id @default(autoincrement())
-}
-
-model Z {
-  id Int @id @default(autoincrement())
+  @@unique([userId, boostOrderId]) // Обеспечивает уникальность boostOrderId для каждого пользователя
 }
