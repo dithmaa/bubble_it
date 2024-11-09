@@ -16,7 +16,6 @@ export type FrontEndBoostsType = {
 interface MarketProps {
   className?: string;
   currentScore: number;
-  toShort: (number: string) => void;
   clickPerOne?: number;
   boostsLists: BoostListsType[];
   setShownMenu: (value: boolean) => void;
@@ -33,7 +32,6 @@ interface MarketProps {
 export const Market: React.FC<MarketProps> = ({
   className,
   shownScore,
-  toShort,
   boostsLists,
   showBoosts,
   frontEndBoosts,
