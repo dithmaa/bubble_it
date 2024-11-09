@@ -6,7 +6,6 @@ export type BoostListsType = {
   id: number;
   price: number;
   level: number;
-  title: string;
 };
 export type FrontEndBoostsType = {
   id: number;
