@@ -3,7 +3,6 @@
 import React from "react";
 import { GamePage } from "./game-page";
 import debounce from "lodash.debounce";
-import { toShort } from "@/src/hooks/handleCount";
 import { frontEndBoosts } from "../../constants/frontEndBoosts";
 import { Market } from "./market";
 import axios from "axios";
@@ -141,7 +140,6 @@ export const Game: React.FC<GameProps> = ({ className }) => {
       {isShowMarket ? (
         <Market
           currentScore={currentScore}
-          toShort={toShort}
           // handleBoosting={handleBoosting}
           clickPerOne={clickPerOne}
           boostsLists={boostsLists}
