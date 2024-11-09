@@ -1,6 +1,22 @@
 import React from "react";
 interface BoostItemProps {
   index: number;
+  boost: {
+    id: number;
+    price: number;
+    level: number;
+  };
+  showBoosts: number;
+  handleShowBoostPage: (value: number) => void;
+  // boostImageLock: string[];
+  images: string[];
+  frontEndBoosts: {
+    id: number;
+    title: string;
+    power: number;
+    image: string;
+  }[];
+  currentScore: number;
 }
 export const BoostItem: React.FC<BoostItemProps> = ({
   boost,
