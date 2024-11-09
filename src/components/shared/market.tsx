@@ -27,7 +27,7 @@ interface MarketProps {
   setCurrentOpenedBoost: (value: number) => void;
   frontEndBoosts: FrontEndBoostsType[];
   showBoosts: number;
-  isNowBoosting: boolean;
+  // isNowBoosting: boolean;
   setShowMenu: (value: boolean) => void;
   setShowGamePage: (value: boolean) => void;
 }
@@ -44,7 +44,7 @@ export const Market: React.FC<MarketProps> = ({
   setShowGamePage,
   currentOpenedBoost,
   setCurrentOpenedBoost,
-  isNowBoosting,
+  // isNowBoosting,
 }) => {
   const [isShowBoostPage, setShowBoostPage] = React.useState<boolean>(false);
 
