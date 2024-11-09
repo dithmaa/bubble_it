@@ -88,7 +88,6 @@ export const Market: React.FC<MarketProps> = ({
             currentScore={currentScore}
             // handleBoosting={handleBoosting}
             shownScore={shownScore}
-            toShort={toShort}
             // isNowBoosting={isNowBoosting}
             images={images}
           />

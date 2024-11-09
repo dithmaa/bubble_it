@@ -1,4 +1,6 @@
 import React from "react";
+import { toShort } from "@/src/hooks/handleCount";
+
 type BoostListsType = {
   id: number;
   price: number;
@@ -20,7 +22,7 @@ interface BoostPageProps {
   boostsLists: BoostListsType[];
   currentScore: number;
   handleBoosting: () => void;
-  shownScore: number;
+  shownScore?: number;
   toShort: (value: string) => void;
   isNowBoosting: boolean;
   images: string[];
@@ -33,8 +35,7 @@ export const BoostPage: React.FC<BoostPageProps> = ({
   boostsLists,
   currentScore,
   handleBoosting,
-  shownScore,
-  toShort,
+  shownScore = 9999,
   isNowBoosting,
   images,
 }) => {
@@ -88,7 +89,7 @@ export const BoostPage: React.FC<BoostPageProps> = ({
                 src={"assets/img/icon-boost-1.png"}
                 alt="Buba Icon"
               />
-              {shownScore < 1000000 ? shownScore : toShort(shownScore)}
+              {shownScore < 1000000 ? shownScore : toShort(String(shownScore))}
             </p>
           </div>
           <div className="boost-btn-div" style={{ textAlign: "center" }}>
