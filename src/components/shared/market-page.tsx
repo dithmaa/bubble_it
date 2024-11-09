@@ -1,6 +1,6 @@
 import { cn } from "@/src/lib/utils";
 import React from "react";
-// import { toShort } from "@/src/hooks/handleCount";
+import { toShort } from "@/src/hooks/handleCount";
 import { BoostSkeletton } from "./boost-skeletton";
 import { BoostItem } from "./boost-item";
 
@@ -8,7 +8,6 @@ type BoostListsType = {
   id: number;
   price: number;
   level: number;
-  title: string;
 };
 
 type FrontEndBoostsType = {
@@ -21,7 +20,6 @@ type FrontEndBoostsType = {
 interface MarketPageProps {
   className?: string;
   shownScore: number;
-  toShort: (value: string) => void;
   frontEndBoosts: FrontEndBoostsType[];
   boostsLists: BoostListsType[];
   showBoosts: number;
@@ -33,7 +31,6 @@ export const MarketPage: React.FC<MarketPageProps> = ({
   className,
   frontEndBoosts,
   shownScore,
-  toShort,
   boostsLists,
   showBoosts,
   handleShowBoostPage,

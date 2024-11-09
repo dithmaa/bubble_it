@@ -5,7 +5,6 @@ type BoostListsType = {
   id: number;
   price: number;
   level: number;
-  title: string;
 };
 
 type FrontEndBoostsType = {
@@ -21,12 +20,11 @@ interface BoostPageProps {
   currentOpenedBoost: number;
   boostsLists: BoostListsType[];
   currentScore: number;
-  handleBoosting: () => void;
   shownScore?: number;
-  toShort: (value: string) => void;
-  isNowBoosting: boolean;
   images: string[];
+  isNowBoosting?: boolean;
 }
+
 export const BoostPage: React.FC<BoostPageProps> = ({
   className = "boost-page",
   handleBackBoost,
@@ -34,10 +32,9 @@ export const BoostPage: React.FC<BoostPageProps> = ({
   currentOpenedBoost,
   boostsLists,
   currentScore,
-  handleBoosting,
   shownScore = 9999,
-  isNowBoosting,
   images,
+  isNowBoosting = false,
 }) => {
   return (
     <div className={className}>
@@ -49,7 +46,7 @@ export const BoostPage: React.FC<BoostPageProps> = ({
 
       <div className="container">
         <img src={images[currentOpenedBoost]} className="boost-picture" />
-        <h3 className="h3">{boostsLists[currentOpenedBoost].title}</h3>
+        {/* <h3 className="h3">{boostsLists[currentOpenedBoost].title}</h3> */}
         <span className="boost-info">
           +{frontEndBoosts[currentOpenedBoost].power} за клик при увеличении
           уровня
@@ -109,7 +106,10 @@ export const BoostPage: React.FC<BoostPageProps> = ({
                 Не достаточный баланс
               </button>
             ) : (
-              <button className="boost-btn" onClick={handleBoosting}>
+              <button
+                className="boost-btn"
+                //  onClick={handleBoosting}
+              >
                 Прокачать уровень
               </button>
             )}

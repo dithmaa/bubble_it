@@ -85,9 +85,7 @@ export const Market: React.FC<MarketProps> = ({
             currentOpenedBoost={currentOpenedBoost}
             boostsLists={boostsLists}
             currentScore={currentScore}
-            // handleBoosting={handleBoosting}
             shownScore={shownScore}
-            // isNowBoosting={isNowBoosting}
             images={images}
           />
         ) : (
@@ -101,7 +99,6 @@ export const Market: React.FC<MarketProps> = ({
         {!isShowBoostPage ? (
           <MarketPage
             shownScore={shownScore}
-            toShort={toShort}
             boostsLists={boostsLists}
             showBoosts={showBoosts}
             handleShowBoostPage={handleShowBoostPage}

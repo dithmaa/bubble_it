@@ -55,7 +55,7 @@ export const Game: React.FC<GameProps> = ({ className }) => {
     },
   ]);
   const [currentOpenedBoost, setCurrentOpenedBoost] = React.useState(0);
-  const [isNowBoosting, setIsNowBoosting] = React.useState(false);
+  // const [isNowBoosting, setIsNowBoosting] = React.useState(false);
   const [showBoosts, setShowBoosts] = React.useState(2);
 
   // ## Интерфейс #Маркет
@@ -152,10 +152,10 @@ export const Game: React.FC<GameProps> = ({ className }) => {
           setCurrentOpenedBoost={setCurrentOpenedBoost}
           frontEndBoosts={frontEndBoosts}
           showBoosts={showBoosts}
-          isNowBoosting={isNowBoosting}
+          // isNowBoosting={isNowBoosting}
           setShowMenu={setShowMenu}
           setShowGamePage={setShowGamePage}
-          setIsNowBoosting={setIsNowBoosting}
+          // setIsNowBoosting={setIsNowBoosting}
         />
       ) : (
         ""
