@@ -19,16 +19,5 @@ model User {
   showBoosts         Int
   isCompletedMiss    Boolean
   isCompletedMission Boolean
-  boosts             Boost[]
-}
-
-model Boost {
-  id     Int  @id @default(autoincrement())
-  userId Int
-  tg_id  Int // Временно делаем tg_id необязательным
-  price  Int
-  level  Int
-  user   User @relation(fields: [userId], references: [id])
-
-  @@index([tg_id])
+  boosts             Json? // Храним бусты как JSON
 }

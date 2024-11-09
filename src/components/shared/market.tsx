@@ -68,12 +68,12 @@ export const Market: React.FC<MarketProps> = ({
 
   const images = [
     "assets/img/boosts/1.png",
-    "assets/img/boosts/1.png",
-    "assets/img/boosts/1.png",
-    "assets/img/boosts/1.png",
-    "assets/img/boosts/1.png",
-    "assets/img/boosts/1.png",
-    "assets/img/boosts/1.png",
+    "assets/img/boosts/2.png",
+    "assets/img/boosts/3.png",
+    "assets/img/boosts/4.png",
+    "assets/img/boosts/5.png",
+    "assets/img/boosts/6.png",
+    "assets/img/boosts/7.png",
   ];
 
   return (

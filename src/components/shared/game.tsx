@@ -86,6 +86,9 @@ export const Game: React.FC<GameProps> = ({ className }) => {
   const [shownScore, setShown] = React.useState<number>(0);
   const [currentScore, setScore] = React.useState<number>(0);
 
+  console.log("shownScore ", shownScore);
+  console.log("currentScore ", currentScore);
+
   // Клик на попит
   const [bubbleStates, setBubbleStates] = React.useState(
     Array.from({ length: 6 }, () => Array(6).fill(false))
@@ -123,17 +126,13 @@ export const Game: React.FC<GameProps> = ({ className }) => {
   };
   //Получение пользователей
   React.useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/boosts?tg_id=32932")
-      .then(({ data }) => {
-        console.log(data);
-        console.log(boostsLists);
-      });
-    axios
-      .get("http://localhost:3000/api/users?tg_id=32932")
-      .then(({ data }) => {
-        console.log(data);
-      });
+    axios.get("http://localhost:3000/api/users?tg_id=4042").then(({ data }) => {
+      console.log(data);
+      setScore(data.clickAmount);
+      setShown(data.clickAmount);
+      setShowBoosts(data.showBoosts);
+      setBoostsLists(data.boosts);
+    });
   }, []);
 
   return (

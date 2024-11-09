@@ -10,6 +10,7 @@ export async function GET(request: Request) {
   }
 
   try {
+    // Ищем пользователя по tg_id
     const user = await prisma.user.findUnique({
       where: {
         tg_id: Number(tgId),
@@ -20,7 +21,11 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    return NextResponse.json(user);
+    // Возвращаем данные пользователя, включая массив бустов
+    return NextResponse.json({
+      ...user,
+      boosts: user.boosts, // Здесь мы возвращаем JSON-поле boosts
+    });
   } catch (error) {
     console.error("Failed to fetch user:", error);
     return NextResponse.json(
