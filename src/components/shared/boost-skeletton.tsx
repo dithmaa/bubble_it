@@ -1,15 +1,15 @@
 import React from "react";
-import ContentLoader from "react-content-loader";
+import ContentLoader, { IContentLoaderProps } from "react-content-loader";
 
-interface BoostSkelettonProps {
+interface BoostSkelettonProps extends IContentLoaderProps {
   className?: string;
   index: number;
-  props: any;
 }
+
 export const BoostSkeletton: React.FC<BoostSkelettonProps> = ({
   className,
   index,
-  props,
+  ...props
 }) => {
   return (
     <div key={index} className={className}>
