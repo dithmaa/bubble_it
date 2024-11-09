@@ -4,7 +4,12 @@ interface PopitProps {
   currentScore?: number;
   bubbleStates: boolean[][];
   setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>;
-  handleBubbleClick: any;
+  handleBubbleClick: (
+    rowIndex: number,
+    colIndex: number,
+    setBubbleStates: React.Dispatch<React.SetStateAction<boolean[][]>>,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 }
 export const Popit: React.FC<PopitProps> = ({
   className,

@@ -17,7 +17,10 @@ export function toShort(number: string) {
 
   return shortened;
 }
-export const animateScore = (sco: number, setShown: any) => {
+export const animateScore = (
+  sco: number,
+  setShown: (value: string) => void
+) => {
   let smallNum: number;
   // let shortNum = "";
 
@@ -43,7 +46,7 @@ export const animateScore = (sco: number, setShown: any) => {
       // setNumber((prevNumber) => prevNumber + 1);
     } else {
       clearInterval(interval);
-      setShown(sco);
+      setShown(String(sco));
     }
   }, 10);
 

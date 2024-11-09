@@ -132,6 +132,7 @@ export const Game: React.FC<GameProps> = ({ className }) => {
       setShown(data.clickAmount);
       setShowBoosts(data.showBoosts);
       setBoostsLists(data.boosts);
+      setClickPerOne(data.clickPerOne);
     });
   }, []);
 
@@ -154,6 +155,7 @@ export const Game: React.FC<GameProps> = ({ className }) => {
           isNowBoosting={isNowBoosting}
           setShowMenu={setShowMenu}
           setShowGamePage={setShowGamePage}
+          setIsNowBoosting={setIsNowBoosting}
         />
       ) : (
         ""

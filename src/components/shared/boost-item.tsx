@@ -7,7 +7,7 @@ export const BoostItem: React.FC<BoostItemProps> = ({
   index,
   showBoosts,
   handleShowBoostPage,
-  boostImageLock,
+  // boostImageLock,
   images,
   frontEndBoosts,
   currentScore,
